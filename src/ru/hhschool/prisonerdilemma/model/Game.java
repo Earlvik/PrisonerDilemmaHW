@@ -1,7 +1,6 @@
 package ru.hhschool.prisonerdilemma.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,34 +21,13 @@ public class Game {
 
 
     int gamesNum = 0;
-    /**
-     * Общий счёт если оба сотрудничают
-     */
-    public int BOTH_COOP = 10;
-    /**
-     * Общий счёт если один предаёт
-     */
-    public int ONE_DEFECT = 5;
-    /**
-     * Общий счёт если оба предают
-     */
-    public int BOTH_DEFECT = 0;
-    /**
-     * Личный счёт если оба сотрудничают
-     */
-    public int BOTH_COOP_PERSONAL = 6;
-    /**
-     * Личный счёт если игрок предал
-     */
-    public int YOU_DEFECT = 4;
-    /**
-     * Личный счёт если игрока предали
-     */
-    public int THEY_DEFECT = 0;
-    /**
-     * Личный счёт если оба предали
-     */
-    public int BOTH_DEFECT_PERSONAL = 1;
+    private int BOTH_COOP = 10;
+    private int ONE_DEFECT = 5;
+    private int BOTH_DEFECT = 0;
+    private int BOTH_COOP_PERSONAL = 6;
+    private int YOU_DEFECT = 4;
+    private int THEY_DEFECT = 0;
+    private int BOTH_DEFECT_PERSONAL = 1;
 
     int gameScore = 0;
 
@@ -81,22 +59,22 @@ public class Game {
 
         if(result1 == result2){
             if( result1 == Strategy.COOPERATE){
-                gameScore += BOTH_COOP;
-                player1.incScore(BOTH_COOP_PERSONAL);
-                player2.incScore(BOTH_COOP_PERSONAL);
+                gameScore += getBOTH_COOP();
+                player1.incScore(getBOTH_COOP_PERSONAL());
+                player2.incScore(getBOTH_COOP_PERSONAL());
             }else{
-                gameScore += BOTH_DEFECT;
-                player1.incScore(BOTH_DEFECT_PERSONAL);
-                player2.incScore(BOTH_DEFECT_PERSONAL);
+                gameScore += getBOTH_DEFECT();
+                player1.incScore(getBOTH_DEFECT_PERSONAL());
+                player2.incScore(getBOTH_DEFECT_PERSONAL());
             }
         }else {
-            gameScore += ONE_DEFECT;
+            gameScore += getONE_DEFECT();
             if( result1 == Strategy.COOPERATE){
-                player1.incScore(THEY_DEFECT);
-                player2.incScore(YOU_DEFECT);
+                player1.incScore(getTHEY_DEFECT());
+                player2.incScore(getYOU_DEFECT());
             }else{
-                player1.incScore(YOU_DEFECT);
-                player2.incScore(THEY_DEFECT);
+                player1.incScore(getYOU_DEFECT());
+                player2.incScore(getTHEY_DEFECT());
             }
         }
 
@@ -128,30 +106,30 @@ public class Game {
 
     public String getGameRules(){
         StringBuilder sb = new StringBuilder("");
-        sb.append("If both players cooperate, company gets ").append(BOTH_COOP);
-        sb.append(" and each player gets ").append(BOTH_COOP_PERSONAL);
-        sb.append("\nIf both players defect, company gets ").append(BOTH_DEFECT);
-        sb.append(" and each player gets ").append(BOTH_DEFECT_PERSONAL);
-        sb.append("\nIf one cooperates and one defects, company gets ").append(ONE_DEFECT);
-        sb.append(" and cooperator gets ").append(THEY_DEFECT).append(" and defector gets ").append(YOU_DEFECT);
+        sb.append("If both players cooperate, company gets ").append(getBOTH_COOP());
+        sb.append(" and each player gets ").append(getBOTH_COOP_PERSONAL());
+        sb.append("\nIf both players defect, company gets ").append(getBOTH_DEFECT());
+        sb.append(" and each player gets ").append(getBOTH_DEFECT_PERSONAL());
+        sb.append("\nIf one cooperates and one defects, company gets ").append(getONE_DEFECT());
+        sb.append(" and cooperator gets ").append(getTHEY_DEFECT()).append(" and defector gets ").append(getYOU_DEFECT());
         return sb.toString();
     }
 
     public void setGameRules(int bothCoop, int bothDefect, int oneDefect, int bothCoopPersonal, int bothDefectPersonal,
     int youDefect, int theyDefect){
-        BOTH_COOP = bothCoop;
-        BOTH_DEFECT = bothDefect;
-        BOTH_COOP_PERSONAL = bothCoopPersonal;
-        BOTH_DEFECT_PERSONAL = bothDefectPersonal;
-        ONE_DEFECT = oneDefect;
-        YOU_DEFECT = youDefect;
-        THEY_DEFECT = theyDefect;
+        setBOTH_COOP(bothCoop);
+        setBOTH_DEFECT(bothDefect);
+        setBOTH_COOP_PERSONAL(bothCoopPersonal);
+        setBOTH_DEFECT_PERSONAL(bothDefectPersonal);
+        setONE_DEFECT(oneDefect);
+        setYOU_DEFECT(youDefect);
+        setTHEY_DEFECT(theyDefect);
     }
 
     public void reset(){
+        gameScore = 0;
         for(Player player:players){
             player.setScore(0);
-            gameScore = 0;
             gamesNum = 0;
             roundsNum = 0;
         }
@@ -180,4 +158,80 @@ public class Game {
                 + "\nAverage round score: " + ((double) gameScore / (double) roundsNum);
     }
 
+    /**
+     * Общий счёт если оба сотрудничают
+     */
+    public int getBOTH_COOP() {
+        return BOTH_COOP;
+    }
+
+    public void setBOTH_COOP(int BOTH_COOP) {
+        this.BOTH_COOP = BOTH_COOP;
+    }
+
+    /**
+     * Общий счёт если один предаёт
+     */
+    public int getONE_DEFECT() {
+        return ONE_DEFECT;
+    }
+
+    public void setONE_DEFECT(int ONE_DEFECT) {
+        this.ONE_DEFECT = ONE_DEFECT;
+    }
+
+    /**
+     * Общий счёт если оба предают
+     */
+    public int getBOTH_DEFECT() {
+        return BOTH_DEFECT;
+    }
+
+    public void setBOTH_DEFECT(int BOTH_DEFECT) {
+        this.BOTH_DEFECT = BOTH_DEFECT;
+    }
+
+    /**
+     * Личный счёт если оба сотрудничают
+     */
+    public int getBOTH_COOP_PERSONAL() {
+        return BOTH_COOP_PERSONAL;
+    }
+
+    public void setBOTH_COOP_PERSONAL(int BOTH_COOP_PERSONAL) {
+        this.BOTH_COOP_PERSONAL = BOTH_COOP_PERSONAL;
+    }
+
+    /**
+     * Личный счёт если игрок предал
+     */
+    public int getYOU_DEFECT() {
+        return YOU_DEFECT;
+    }
+
+    public void setYOU_DEFECT(int YOU_DEFECT) {
+        this.YOU_DEFECT = YOU_DEFECT;
+    }
+
+    /**
+     * Личный счёт если игрока предали
+     */
+    public int getTHEY_DEFECT() {
+        return THEY_DEFECT;
+    }
+
+    public void setTHEY_DEFECT(int THEY_DEFECT) {
+        this.THEY_DEFECT = THEY_DEFECT;
+    }
+
+    /**
+     * Личный счёт если оба предали
+     */
+    public int getBOTH_DEFECT_PERSONAL() {
+        return BOTH_DEFECT_PERSONAL;
+    }
+
+    public void setBOTH_DEFECT_PERSONAL(int BOTH_DEFECT_PERSONAL) {
+        this.BOTH_DEFECT_PERSONAL = BOTH_DEFECT_PERSONAL;
+    }
 }
