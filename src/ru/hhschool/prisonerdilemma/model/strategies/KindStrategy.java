@@ -24,6 +24,6 @@ public class KindStrategy implements Strategy {
 
     @Override
     public String toString(){
-        return "Kind. Always cooperates.";
+        return "Kind. Always Cooperates.";
     }
 }

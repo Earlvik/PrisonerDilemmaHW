@@ -25,6 +25,6 @@ public class EvilStrategy implements Strategy {
 
     @Override
     public String toString(){
-        return "Evil. Always defects.";
+        return "Evil. Always Defects.";
     }
 }

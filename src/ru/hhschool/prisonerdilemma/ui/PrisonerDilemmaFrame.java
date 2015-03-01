@@ -64,13 +64,13 @@ public class PrisonerDilemmaFrame extends JFrame {
 
         playerComboBox.setModel(new DefaultComboBoxModel(PlayerType.values()));
 
-        bothCoopTextField.setText(game.BOTH_COOP + "");
-        bothDefectTextField.setText(game.BOTH_DEFECT + "");
-        bothCoopPersonalTextField.setText(game.BOTH_COOP_PERSONAL + "");
-        bothDefectPersonalTextField.setText(game.BOTH_DEFECT_PERSONAL + "");
-        oneDefectTextField.setText(game.ONE_DEFECT + "");
-        youDefectTextField.setText(game.YOU_DEFECT + "");
-        theyDefectTextField.setText(game.THEY_DEFECT + "");
+        bothCoopTextField.setText(game.getBOTH_COOP() + "");
+        bothDefectTextField.setText(game.getBOTH_DEFECT() + "");
+        bothCoopPersonalTextField.setText(game.getBOTH_COOP_PERSONAL() + "");
+        bothDefectPersonalTextField.setText(game.getBOTH_DEFECT_PERSONAL() + "");
+        oneDefectTextField.setText(game.getONE_DEFECT() + "");
+        youDefectTextField.setText(game.getYOU_DEFECT() + "");
+        theyDefectTextField.setText(game.getTHEY_DEFECT() + "");
 
         playerList.setModel(model);
 
