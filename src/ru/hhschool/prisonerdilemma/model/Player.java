@@ -28,7 +28,7 @@ public class Player {
     }
 
     public void handleResult(Player other, int result){
-        strategy.handleResult(other, result);
+        strategy.handleResult(other , result);
     }
 
     @Override

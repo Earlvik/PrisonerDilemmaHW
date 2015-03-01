@@ -31,7 +31,7 @@ public class TitForTatStrategyTest {
     @Test
     public void testPlay() throws Exception {
         assertEquals(Strategy.COOPERATE, tftStrategy.play(evilPlayer));
-        tftStrategy.handleResult(evilPlayer, Strategy.DEFECT);
+        tftStrategy.handleResult(evilPlayer , Strategy.DEFECT);
         assertEquals(Strategy.DEFECT, tftStrategy.play(evilPlayer));
         assertEquals(Strategy.COOPERATE, tftStrategy.play(evilPlayer));
 

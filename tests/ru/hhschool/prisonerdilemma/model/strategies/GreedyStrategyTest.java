@@ -23,21 +23,21 @@ public class GreedyStrategyTest {
     public void setUp(){
         kindPlayer = Mockito.mock(Player.class);
         when(kindPlayer.play(any(Player.class))).thenReturn(Strategy.COOPERATE);
+        when(kindPlayer.getScore()).thenReturn(200);
         greedyStrategy = new GreedyStrategy();
         testPlayer = new Player(greedyStrategy);
+        greedyStrategy.setPlayer(testPlayer);
     }
 
     @Test
     public void testPlayWithLowerScore(){
-        kindPlayer.setScore(100);
-        testPlayer.setScore(200);
+        testPlayer.setScore(300);
         assertEquals(Strategy.COOPERATE, testPlayer.play(kindPlayer));
     }
 
     @Test
     public void testPlayWithHigherScore(){
-        kindPlayer.setScore(300);
-        testPlayer.setScore(200);
+        testPlayer.setScore(100);
         assertEquals(Strategy.DEFECT, testPlayer.play(kindPlayer));
     }
 

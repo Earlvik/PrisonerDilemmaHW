@@ -32,6 +32,7 @@ public class TitForTatStrategy implements Strategy {
         return COOPERATE;
     }
 
+
     @Override
     public void handleResult(Player player, int result) {
         if(result == Strategy.DEFECT){
