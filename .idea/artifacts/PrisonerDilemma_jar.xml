@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PrisonerDilemma:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/PrisonerDilemma_jar</output-path>
-    <root id="archive" name="PrisonerDilemma.jar">
-      <element id="module-output" name="PrisonerDilemma" />
-    </root>
-  </artifact>
-</component>
