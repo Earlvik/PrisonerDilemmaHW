@@ -44,7 +44,7 @@ public class RandomStrategyTest {
 
     @Test
     public void testInfo() throws Exception {
-        assertEquals("Random. Non-predictable behaviour.", randomStrategy.toString());
+        assertEquals("Random. Non-predictable behaviour!", randomStrategy.toString());
         assertEquals("Random", randomStrategy.shortInfo());
     }
 }
