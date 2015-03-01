@@ -44,12 +44,7 @@ public class PlayerTest {
         assertEquals("The strategy should be the kind one", kind, player.getStrategy());
     }
 
-    @Test
-    public void testSetStrategy() throws Exception {
 
-        player.setStrategy(evil);
-        assertEquals("The strategy should be the evil one", evil, player.getStrategy());
-    }
 
     @Test
     public void testIncScore() throws Exception {

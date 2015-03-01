@@ -3,7 +3,6 @@ package ru.hhschool.prisonerdilemma.model;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.*;
@@ -29,12 +28,6 @@ public class GameTest {
     }
 
 
-    @Test
-    public void testLoggingValue() throws Exception {
-        assertFalse("Game was logging by default, it should be false",game.isLogging());
-        game.setLogging(true);
-        assertTrue("Game should be logging, but was false", game.isLogging());
-    }
 
 
     @Test
@@ -107,9 +100,9 @@ public class GameTest {
         });
 
         game.play(kind1, kind2);
-        assertEquals("Game score after game should be "+game.getBOTH_COOP(),game.getBOTH_COOP(), game.gameScore);
-        assertTrue("Players score should be the same and equal to " + game.getBOTH_COOP_PERSONAL(),
-                (game.getBOTH_COOP_PERSONAL() == kind1.getScore() && game.getBOTH_COOP_PERSONAL() == kind2.getScore()));
+        assertEquals("Game score after game should be "+game.getBothCoop(),game.getBothCoop(), game.gameScore);
+        assertTrue("Players score should be the same and equal to " + game.getBothCoopPersonal(),
+                (game.getBothCoopPersonal() == kind1.getScore() && game.getBothCoopPersonal() == kind2.getScore()));
     }
 
     @Test
@@ -149,9 +142,9 @@ public class GameTest {
         });
 
         game.play(evil1, evil2);
-        assertEquals("Game score after game should be "+game.getBOTH_DEFECT(),game.getBOTH_DEFECT(), game.gameScore);
-        assertTrue("Players score should be the same and equal to " + game.getBOTH_DEFECT(),
-                (game.getBOTH_DEFECT_PERSONAL() == evil1.getScore() && game.getBOTH_DEFECT_PERSONAL() == evil2.getScore()));
+        assertEquals("Game score after game should be "+game.getBothDefect(),game.getBothDefect(), game.gameScore);
+        assertTrue("Players score should be the same and equal to " + game.getBothDefect(),
+                (game.getBothDefectPersonal() == evil1.getScore() && game.getBothDefectPersonal() == evil2.getScore()));
     }
 
 
@@ -191,12 +184,12 @@ public class GameTest {
             }
         });
         game.play(kind, evil);
-        assertEquals("Game score after game should be " + game.getONE_DEFECT(), game.getONE_DEFECT(), game.gameScore);
-        assertEquals("Kind player score should be and equal to " + game.getTHEY_DEFECT(),
-                game.getTHEY_DEFECT(), kind.getScore());
+        assertEquals("Game score after game should be " + game.getOneDefect(), game.getOneDefect(), game.gameScore);
+        assertEquals("Kind player score should be and equal to " + game.getTheyDefect(),
+                game.getTheyDefect(), kind.getScore());
 
-        assertEquals("Evil player score should be and equal to " + game.getYOU_DEFECT(),
-                game.getYOU_DEFECT(), evil.getScore());
+        assertEquals("Evil player score should be and equal to " + game.getYouDefect(),
+                game.getYouDefect(), evil.getScore());
     }
 
     @Test
@@ -214,13 +207,13 @@ public class GameTest {
         String rulesBefore = game.getGameRules();
         game.setGameRules(0,1,2,3,4,5,6);
         //Check new values
-        assertEquals(0, game.getBOTH_COOP());
-        assertEquals(1,game.getBOTH_DEFECT());
-        assertEquals(2,game.getONE_DEFECT());
-        assertEquals(3,game.getBOTH_COOP_PERSONAL());
-        assertEquals(4,game.getBOTH_DEFECT_PERSONAL());
-        assertEquals(5,game.getYOU_DEFECT());
-        assertEquals(6,game.getTHEY_DEFECT());
+        assertEquals(0, game.getBothCoop());
+        assertEquals(1,game.getBothDefect());
+        assertEquals(2,game.getOneDefect());
+        assertEquals(3,game.getBothCoopPersonal());
+        assertEquals(4,game.getBothDefectPersonal());
+        assertEquals(5,game.getYouDefect());
+        assertEquals(6,game.getTheyDefect());
         assertTrue("Game rules have not changed!", !rulesBefore.equals(game.getGameRules()));
 
     }

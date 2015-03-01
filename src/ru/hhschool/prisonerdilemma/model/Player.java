@@ -5,7 +5,7 @@ package ru.hhschool.prisonerdilemma.model;
 
 public class Player {
     int score = 0;
-    Strategy strategy;
+    final Strategy strategy;
 
     public int getScore() {
         return score;
@@ -17,10 +17,6 @@ public class Player {
 
     public Strategy getStrategy() {
         return strategy;
-    }
-
-    public void setStrategy(Strategy strategy) {
-        this.strategy = strategy;
     }
 
     public void incScore(int inc){

@@ -28,7 +28,6 @@ public class ConsolePlay {
         game.addPlayer(tit50Player);
         game.addPlayer(tit80Player);
 
-        game.setLogging(true);
 
         for(int i = 0; i< 100; i++){
             game.playEveryone();

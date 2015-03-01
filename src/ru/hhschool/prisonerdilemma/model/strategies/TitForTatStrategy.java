@@ -3,16 +3,14 @@ package ru.hhschool.prisonerdilemma.model.strategies;
 import ru.hhschool.prisonerdilemma.model.Player;
 import ru.hhschool.prisonerdilemma.model.Strategy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Earlviktor on 04.02.2015.
  */
 public class TitForTatStrategy implements Strategy {
 
-    List<Player> evilDoers = new ArrayList<Player>();
+    Set<Player> evilDoers = new HashSet<Player>();
     final double forgivenessProbability;
     Random rnd = new Random();
 
