@@ -1,0 +1,317 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Game</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">ru.hhschool.prisonerdilemma.model</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Game (ru.hhschool.prisonerdilemma.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Game</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (27/ 27)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98%
+  </span>
+  <span class="absValue">
+    (98/ 100)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package ru.hhschool.prisonerdilemma.model;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.slf4j.Logger;
+<i>4</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;/**
+<i>10</i>&nbsp; * Created by Earlviktor on 04.02.2015.
+<i>11</i>&nbsp; */
+<b class="fc"><i>12</i>&nbsp;public class Game {</b>
+<i>13</i>&nbsp;
+<b class="fc"><i>14</i>&nbsp;    Logger logger = LoggerFactory.getLogger(Game.class);</b>
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;    private int roundsNum = 0;</b>
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;
+<b class="fc"><i>20</i>&nbsp;    int gamesNum = 0;</b>
+<b class="fc"><i>21</i>&nbsp;    private int bothCoop = 10;</b>
+<b class="fc"><i>22</i>&nbsp;    private int oneDefect = 5;</b>
+<b class="fc"><i>23</i>&nbsp;    private int bothDefect = 0;</b>
+<b class="fc"><i>24</i>&nbsp;    private int bothCoopPersonal = 6;</b>
+<b class="fc"><i>25</i>&nbsp;    private int youDefect = 4;</b>
+<b class="fc"><i>26</i>&nbsp;    private int theyDefect = 0;</b>
+<b class="fc"><i>27</i>&nbsp;    private int bothDefectPersonal = 1;</b>
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;    int gameScore = 0;</b>
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;    List&lt;Player&gt; players = new ArrayList&lt;Player&gt;();</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public int getGameScore() {
+<b class="fc"><i>34</i>&nbsp;        return gameScore;</b>
+<i>35</i>&nbsp;    }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    public void setGameScore(int gameScore) {
+<b class="fc"><i>38</i>&nbsp;        this.gameScore = gameScore;</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    public void addPlayer(Player player){
+<b class="fc"><i>42</i>&nbsp;        players.add(player);</b>
+<b class="fc"><i>43</i>&nbsp;    }</b>
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    public void removePlayer(Player player){
+<b class="fc"><i>46</i>&nbsp;        players.remove(player);</b>
+<b class="fc"><i>47</i>&nbsp;    }</b>
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    public void play(Player player1, Player player2){
+<b class="fc"><i>50</i>&nbsp;        gamesNum++;</b>
+<i>51</i>&nbsp;
+<b class="fc"><i>52</i>&nbsp;        logger.info(&quot;Play: &quot;+player1+&quot; and \n&quot;+player2);</b>
+<i>53</i>&nbsp;
+<b class="fc"><i>54</i>&nbsp;        int result1 = player1.play(player2);</b>
+<b class="fc"><i>55</i>&nbsp;        int result2 = player2.play(player1);</b>
+<i>56</i>&nbsp;
+<b class="fc"><i>57</i>&nbsp;        if(result1 == result2){</b>
+<b class="fc"><i>58</i>&nbsp;            if( result1 == Strategy.COOPERATE){</b>
+<b class="fc"><i>59</i>&nbsp;                gameScore += getBothCoop();</b>
+<b class="fc"><i>60</i>&nbsp;                player1.incScore(getBothCoopPersonal());</b>
+<b class="fc"><i>61</i>&nbsp;                player2.incScore(getBothCoopPersonal());</b>
+<i>62</i>&nbsp;            }else{
+<b class="fc"><i>63</i>&nbsp;                gameScore += getBothDefect();</b>
+<b class="fc"><i>64</i>&nbsp;                player1.incScore(getBothDefectPersonal());</b>
+<b class="fc"><i>65</i>&nbsp;                player2.incScore(getBothDefectPersonal());</b>
+<i>66</i>&nbsp;            }
+<i>67</i>&nbsp;        }else {
+<b class="fc"><i>68</i>&nbsp;            gameScore += getOneDefect();</b>
+<b class="fc"><i>69</i>&nbsp;            if( result1 == Strategy.COOPERATE){</b>
+<b class="fc"><i>70</i>&nbsp;                player1.incScore(getTheyDefect());</b>
+<b class="fc"><i>71</i>&nbsp;                player2.incScore(getYouDefect());</b>
+<i>72</i>&nbsp;            }else{
+<b class="nc"><i>73</i>&nbsp;                player1.incScore(getYouDefect());</b>
+<b class="nc"><i>74</i>&nbsp;                player2.incScore(getTheyDefect());</b>
+<i>75</i>&nbsp;            }
+<i>76</i>&nbsp;        }
+<i>77</i>&nbsp;
+<b class="fc"><i>78</i>&nbsp;        player1.handleResult(player2, result2);</b>
+<b class="fc"><i>79</i>&nbsp;        player2.handleResult(player1, result1);</b>
+<i>80</i>&nbsp;
+<b class="fc"><i>81</i>&nbsp;        logger.info(&quot;Player 1 &quot;+((result1 == Strategy.COOPERATE)?&quot;COOPERATED&quot;:&quot;DEFECTED&quot;)+</b>
+<i>82</i>&nbsp;            &quot;\nPlayer 2 &quot;+((result2 == Strategy.COOPERATE)?&quot;COOPERATED&quot;:&quot;DEFECTED&quot;)+
+<b class="fc"><i>83</i>&nbsp;            &quot;\nPlayer 1 score became &quot;+player1.getScore()+</b>
+<b class="fc"><i>84</i>&nbsp;            &quot;\nPlayer 2 score became &quot;+player2.getScore()+</b>
+<i>85</i>&nbsp;            &quot;\nGame score became &quot;+gameScore);
+<i>86</i>&nbsp;
+<b class="fc"><i>87</i>&nbsp;    }</b>
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public int[] playEveryone(){
+<b class="fc"><i>90</i>&nbsp;        roundsNum++;</b>
+<b class="fc"><i>91</i>&nbsp;        for(int i = 0; i &lt; players.size() - 1; i++ ){</b>
+<b class="fc"><i>92</i>&nbsp;            for( int j = i+1; j &lt; players.size(); j++){</b>
+<b class="fc"><i>93</i>&nbsp;                play(players.get(i), players.get(j));</b>
+<i>94</i>&nbsp;            }
+<i>95</i>&nbsp;        }
+<b class="fc"><i>96</i>&nbsp;        int[] results = new int[players.size() + 1];</b>
+<b class="fc"><i>97</i>&nbsp;        results[0] = gameScore;</b>
+<b class="fc"><i>98</i>&nbsp;        for(int i = 1; i &lt; results.length; i++){</b>
+<b class="fc"><i>99</i>&nbsp;            results[i] = players.get(i-1).getScore();</b>
+<i>100</i>&nbsp;        }
+<b class="fc"><i>101</i>&nbsp;        return results;</b>
+<i>102</i>&nbsp;    }
+<i>103</i>&nbsp;
+<i>104</i>&nbsp;    public String getGameRules(){
+<i>105</i>&nbsp;
+<b class="fc"><i>106</i>&nbsp;        return &quot;If both players cooperate, company gets &quot;+bothCoop+</b>
+<i>107</i>&nbsp;        &quot; and each player gets &quot;+bothCoopPersonal+
+<b class="fc"><i>108</i>&nbsp;        &quot;\nIf both players defect, company gets &quot;+getBothDefect()+</b>
+<i>109</i>&nbsp;        &quot; and each player gets &quot;+bothDefectPersonal+
+<i>110</i>&nbsp;        &quot;\nIf one cooperates and one defects, company gets &quot;+oneDefect+
+<i>111</i>&nbsp;        &quot; and cooperator gets &quot;+theyDefect+&quot; and defector gets &quot;+youDefect;
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    }
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    public void setGameRules(int bothCoop, int bothDefect, int oneDefect, int bothCoopPersonal, int bothDefectPersonal,
+<i>116</i>&nbsp;    int youDefect, int theyDefect){
+<b class="fc"><i>117</i>&nbsp;        setBothCoop(bothCoop);</b>
+<b class="fc"><i>118</i>&nbsp;        setBothDefect(bothDefect);</b>
+<b class="fc"><i>119</i>&nbsp;        setBothCoopPersonal(bothCoopPersonal);</b>
+<b class="fc"><i>120</i>&nbsp;        setBothDefectPersonal(bothDefectPersonal);</b>
+<b class="fc"><i>121</i>&nbsp;        setOneDefect(oneDefect);</b>
+<b class="fc"><i>122</i>&nbsp;        setYouDefect(youDefect);</b>
+<b class="fc"><i>123</i>&nbsp;        setTheyDefect(theyDefect);</b>
+<b class="fc"><i>124</i>&nbsp;    }</b>
+<i>125</i>&nbsp;
+<i>126</i>&nbsp;    public void reset(){
+<b class="fc"><i>127</i>&nbsp;        gameScore = 0;</b>
+<b class="fc"><i>128</i>&nbsp;        for(Player player:players){</b>
+<b class="fc"><i>129</i>&nbsp;            player.setScore(0);</b>
+<b class="fc"><i>130</i>&nbsp;            gamesNum = 0;</b>
+<b class="fc"><i>131</i>&nbsp;            roundsNum = 0;</b>
+<b class="fc"><i>132</i>&nbsp;        }</b>
+<b class="fc"><i>133</i>&nbsp;    }</b>
+<i>134</i>&nbsp;
+<i>135</i>&nbsp;    public Player[] getPlayers(){
+<b class="fc"><i>136</i>&nbsp;        return players.toArray(new Player[players.size()]);</b>
+<i>137</i>&nbsp;    }
+<i>138</i>&nbsp;
+<i>139</i>&nbsp;
+<i>140</i>&nbsp;
+<i>141</i>&nbsp;    @Override
+<i>142</i>&nbsp;    public String toString(){
+<b class="fc"><i>143</i>&nbsp;        StringBuilder sb = new StringBuilder(&quot;&quot;);</b>
+<b class="fc"><i>144</i>&nbsp;        for(Player player: players){</b>
+<b class="fc"><i>145</i>&nbsp;            sb.append(player.toString())</b>
+<b class="fc"><i>146</i>&nbsp;                    .append(&quot;\n&quot;);</b>
+<b class="fc"><i>147</i>&nbsp;        }</b>
+<b class="fc"><i>148</i>&nbsp;        sb.append(results());</b>
+<b class="fc"><i>149</i>&nbsp;        return sb.toString();</b>
+<i>150</i>&nbsp;    }
+<i>151</i>&nbsp;
+<i>152</i>&nbsp;    public String results(){
+<b class="fc"><i>153</i>&nbsp;        return &quot;Total score: &quot; + gameScore + &quot;\nAverage game score: &quot;</b>
+<i>154</i>&nbsp;                + ((double) gameScore / (double) gamesNum)
+<i>155</i>&nbsp;                + &quot;\nAverage round score: &quot; + ((double) gameScore / (double) roundsNum);
+<i>156</i>&nbsp;    }
+<i>157</i>&nbsp;
+<i>158</i>&nbsp;    /**
+<i>159</i>&nbsp;     * ќбщий счЄт если оба сотрудничают
+<i>160</i>&nbsp;     */
+<i>161</i>&nbsp;    public int getBothCoop() {
+<b class="fc"><i>162</i>&nbsp;        return bothCoop;</b>
+<i>163</i>&nbsp;    }
+<i>164</i>&nbsp;
+<i>165</i>&nbsp;    public void setBothCoop(int bothCoop) {
+<b class="fc"><i>166</i>&nbsp;        this.bothCoop = bothCoop;</b>
+<b class="fc"><i>167</i>&nbsp;    }</b>
+<i>168</i>&nbsp;
+<i>169</i>&nbsp;    /**
+<i>170</i>&nbsp;     * ќбщий счЄт если один предаЄт
+<i>171</i>&nbsp;     */
+<i>172</i>&nbsp;    public int getOneDefect() {
+<b class="fc"><i>173</i>&nbsp;        return oneDefect;</b>
+<i>174</i>&nbsp;    }
+<i>175</i>&nbsp;
+<i>176</i>&nbsp;    public void setOneDefect(int oneDefect) {
+<b class="fc"><i>177</i>&nbsp;        this.oneDefect = oneDefect;</b>
+<b class="fc"><i>178</i>&nbsp;    }</b>
+<i>179</i>&nbsp;
+<i>180</i>&nbsp;    /**
+<i>181</i>&nbsp;     * ќбщий счЄт если оба предают
+<i>182</i>&nbsp;     */
+<i>183</i>&nbsp;    public int getBothDefect() {
+<b class="fc"><i>184</i>&nbsp;        return bothDefect;</b>
+<i>185</i>&nbsp;    }
+<i>186</i>&nbsp;
+<i>187</i>&nbsp;    public void setBothDefect(int bothDefect) {
+<b class="fc"><i>188</i>&nbsp;        this.bothDefect = bothDefect;</b>
+<b class="fc"><i>189</i>&nbsp;    }</b>
+<i>190</i>&nbsp;
+<i>191</i>&nbsp;    /**
+<i>192</i>&nbsp;     * Ћичный счЄт если оба сотрудничают
+<i>193</i>&nbsp;     */
+<i>194</i>&nbsp;    public int getBothCoopPersonal() {
+<b class="fc"><i>195</i>&nbsp;        return bothCoopPersonal;</b>
+<i>196</i>&nbsp;    }
+<i>197</i>&nbsp;
+<i>198</i>&nbsp;    public void setBothCoopPersonal(int bothCoopPersonal) {
+<b class="fc"><i>199</i>&nbsp;        this.bothCoopPersonal = bothCoopPersonal;</b>
+<b class="fc"><i>200</i>&nbsp;    }</b>
+<i>201</i>&nbsp;
+<i>202</i>&nbsp;    /**
+<i>203</i>&nbsp;     * Ћичный счЄт если игрок предал
+<i>204</i>&nbsp;     */
+<i>205</i>&nbsp;    public int getYouDefect() {
+<b class="fc"><i>206</i>&nbsp;        return youDefect;</b>
+<i>207</i>&nbsp;    }
+<i>208</i>&nbsp;
+<i>209</i>&nbsp;    public void setYouDefect(int youDefect) {
+<b class="fc"><i>210</i>&nbsp;        this.youDefect = youDefect;</b>
+<b class="fc"><i>211</i>&nbsp;    }</b>
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;    /**
+<i>214</i>&nbsp;     * Ћичный счЄт если игрока предали
+<i>215</i>&nbsp;     */
+<i>216</i>&nbsp;    public int getTheyDefect() {
+<b class="fc"><i>217</i>&nbsp;        return theyDefect;</b>
+<i>218</i>&nbsp;    }
+<i>219</i>&nbsp;
+<i>220</i>&nbsp;    public void setTheyDefect(int theyDefect) {
+<b class="fc"><i>221</i>&nbsp;        this.theyDefect = theyDefect;</b>
+<b class="fc"><i>222</i>&nbsp;    }</b>
+<i>223</i>&nbsp;
+<i>224</i>&nbsp;    /**
+<i>225</i>&nbsp;     * Ћичный счЄт если оба предали
+<i>226</i>&nbsp;     */
+<i>227</i>&nbsp;    public int getBothDefectPersonal() {
+<b class="fc"><i>228</i>&nbsp;        return bothDefectPersonal;</b>
+<i>229</i>&nbsp;    }
+<i>230</i>&nbsp;
+<i>231</i>&nbsp;    public void setBothDefectPersonal(int bothDefectPersonal) {
+<b class="fc"><i>232</i>&nbsp;        this.bothDefectPersonal = bothDefectPersonal;</b>
+<b class="fc"><i>233</i>&nbsp;    }</b>
+<i>234</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-03-01 19:11</div>
+</div>
+</body>
+</html>

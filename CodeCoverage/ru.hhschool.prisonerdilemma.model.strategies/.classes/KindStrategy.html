@@ -1,0 +1,112 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: KindStrategy</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">ru.hhschool.prisonerdilemma.model.strategies</a> ]
+</div>
+
+<h1>Coverage Summary for Class: KindStrategy (ru.hhschool.prisonerdilemma.model.strategies)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">KindStrategy</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/ 5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package ru.hhschool.prisonerdilemma.model.strategies;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import ru.hhschool.prisonerdilemma.model.Player;
+<i>4</i>&nbsp;import ru.hhschool.prisonerdilemma.model.Strategy;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Created by Earlviktor on 04.02.2015.
+<i>8</i>&nbsp; */
+<b class="fc"><i>9</i>&nbsp;public class KindStrategy implements Strategy {</b>
+<i>10</i>&nbsp;    @Override
+<i>11</i>&nbsp;    public int play(Player player) {
+<b class="fc"><i>12</i>&nbsp;        return Strategy.COOPERATE;</b>
+<i>13</i>&nbsp;    }
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    @Override
+<i>16</i>&nbsp;    public void handleResult(Player player, int result) {
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    @Override
+<i>21</i>&nbsp;    public String shortInfo() {
+<b class="fc"><i>22</i>&nbsp;        return &quot;Kind&quot;;</b>
+<i>23</i>&nbsp;    }
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Override
+<i>26</i>&nbsp;    public String toString(){
+<b class="fc"><i>27</i>&nbsp;        return &quot;Kind. Always Cooperates.&quot;;</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2015-03-01 19:11</div>
+</div>
+</body>
+</html>
