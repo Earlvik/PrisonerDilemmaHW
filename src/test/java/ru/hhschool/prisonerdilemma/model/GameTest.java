@@ -4,6 +4,9 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import ru.hhschool.prisonerdilemma.model.Game;
+import ru.hhschool.prisonerdilemma.model.Player;
+import ru.hhschool.prisonerdilemma.model.Strategy;
 
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
